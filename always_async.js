@@ -36,4 +36,9 @@ Thus, you should see "FIRST", "SECOND"
    `promise-it-wont-hurt help`.
 */
 
+var q = require('q');
+var defer = q.defer(); 
+defer.promise.then( console.log );
+defer.resolve( "SECOND" );
+console.log( "FIRST" );
 
