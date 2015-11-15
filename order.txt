@@ -1,0 +1,12 @@
+01 fulfill_a_promise
+02 reject_a_promise
+03 to_reject_or_not_to_reject
+04 always_async
+05 values_and_promises
+06 throw_an_error
+07 using_qfcall
+08 an_important_rule
+09 multiple_promises
+10 fetch_json
+11 do_some_work
+12 more_functional
