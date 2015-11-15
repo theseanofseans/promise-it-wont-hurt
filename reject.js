@@ -40,3 +40,12 @@ Boilerplate
    `promise-it-wont-hurt help`.
 */
 
+var q = require('q');
+var defer = q.defer(); 
+setTimeout(defer.reject(new Error("REJECTED!")),300);
+defer.promise.then(function(value) {
+	console.log(value);
+}, function(err) {
+	console.log(err.message);
+});
+
