@@ -12,4 +12,6 @@ git remote add origin <URL>
 
 git status
 
-git push origin master
+git push --set-upstream origin master
+
+git push
