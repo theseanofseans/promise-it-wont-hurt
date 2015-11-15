@@ -56,3 +56,12 @@ which is extremely exciting.
    `promise-it-wont-hurt help`.
 */
 
+function attachTitle (str) {
+	return "DR. " + str;
+}
+
+var q = require('q');
+var defer = q.defer(); 
+defer.promise.then( attachTitle ).then( console.log );
+defer.resolve( "MANHATTAN" );
+
