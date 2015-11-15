@@ -16,12 +16,14 @@ errors in logic, problems with syntax, or other simple mistakes it is
 possible to call your callback multiple times and create vexxing states in your
 app or insidious bugs.
 
-/*
-  this code is bad, but nonetheless common and has the nasty result of calling
-  the supplied callback more than once (possibly destroying the earth?)
-  it is conventional to return the first invocation of callback but it's 
-  easy to overlook!
 */
+// /*
+//  this code is bad, but nonetheless common and has the nasty result of calling
+//  the supplied callback more than once (possibly destroying the earth?)
+//  it is conventional to return the first invocation of callback but it's 
+//  easy to overlook!
+//*/
+/*
 var function (user, callback) {
   if (user) {
     callback(null, user); 
@@ -50,4 +52,10 @@ If successful, your script should only log "I FIRED" and should NOT log
  » For help with this problem or with promise-it-wont-hurt, run:
    `promise-it-wont-hurt help`.
 */
+
+var q = require('q');
+var defer = q.defer(); 
+defer.promise.then( console.log , console.log );
+defer.resolve( "I FIRED" );
+defer.reject( "I DID NOT FIRE" );
 
