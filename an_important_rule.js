@@ -96,3 +96,34 @@ Try to fix this using the approach described above.
    `promise-it-wont-hurt help`.
 */
 
+//1. Create a function "throwMyGod" that throws an Error with text "OH NOES"
+
+//2. Create a function "iterate" that prints the first argument 
+//   (an integer) to it and then returns that argument + 1;
+//3. Create a promise chain that wraps your iterate method using Q's
+//   fcall then a series of iterations that attempts to perform iterate
+//   10 times.  
+//4. Attach console.log as a rejection handler at the bottom of your
+//   chain.
+//5. Insert a call to "throwMyGod" after your 5th call of "iterate"
+
+function throwMyGod() {
+	throw new Error( "OH NOES" );
+}
+
+function iterate(arg) {
+	console.log(arg);
+	return arg + 1;
+}
+
+var q = require('q');
+q.fcall(
+	function() {
+		for (var i= 1; i <= 10; i++ )  {
+			iterate(i);
+			if (i == 5)
+				throwMyGod()
+		}
+	}
+).then(null, console.log);
+
