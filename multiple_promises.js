@@ -77,4 +77,29 @@ and you can quickly discover many amazing patterns for building async systems.
    `promise-it-wont-hurt help`.
 */
 
+function all(promises) {
+	var q = require('q');
+	var defer = q.defer(); 
+	defer.promise.then( console.log , console.log );
+	var vals= [];
+	var cnt= 0;
+	for ( var i = 0; i < promises.length ; i++ ) 
+		promises[i].then((function(val) {
+				vals.push(val);
+				cnt++;
+		}) , (function(err) {
+			defer.reject( err );
+		}));
+	if (cnt == promises.length)
+		defer.resolve( vals );
+	return defer;
+}
+
+var q = require('q');
+var defer1 = q.defer(); 
+var defer2 = q.defer(); 
+
+var all_promise= all([defer1.promise , defer2.promise]);
+
+setTimeout( all_promise.resolve, 200 , ["PROMISES" , "FTW"] );
 
