@@ -44,6 +44,13 @@ If you get stuck, refer to the q-io documentation for clarification.
    `promise-it-wont-hurt help`.
 */
 
-// https://github.com/kriskowal/q-io
-// https://github.com/kriskowal/q-io#http
+/*
+https://github.com/kriskowal/q-io
+https://github.com/kriskowal/q-io#http
+*/
+
+var HTTP = require("q-io/http");
+var response= HTTP.read("http://localhost:1337");
+
+response.then( JSON.parse ).then( console.log , console.error );
 
