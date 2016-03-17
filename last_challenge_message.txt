@@ -1,0 +1,46 @@
+
+lowerys@starbuck promise-it-wont-hurt$ promise-it-wont-hurt verify more_functional.js 
+Verifying "more_functional"...
+
+ACTUAL:   "{ id: '26d56ae0-ebef-11e5-8c86-e552dea1c434',"
+EXPECTED: "{ id: '26d56ae0-ebef-11e5-8c86-e552dea1c434',"
+
+ACTUAL:   "  first_name: 'Barry',"
+EXPECTED: "  first_name: 'Barry',"
+
+ACTUAL:   "  last_name: 'Gernhardt',"
+EXPECTED: "  last_name: 'Gernhardt',"
+
+ACTUAL:   "  occupation: 'Twitter rant specialist' }"
+EXPECTED: "  occupation: 'Twitter rant specialist' }"
+
+ACTUAL:   ""
+EXPECTED: ""
+
+# PASS
+
+Your solution to more_functional passed!
+
+Here's what the official solution is if you want to compare notes:
+
+-----------------------------------------------------------------
+
+
+      var qhttp = require('q-io/http')
+        , _ = require('lodash')
+        , cachePath = "http://localhost:7000/"
+        , dbPath = "http://localhost:7001/";
+    
+      var buildDbPath = _.bind(String.prototype.concat, dbPath);
+    
+      qhttp.read(cachePath)
+      .then(_.compose(qhttp.read, buildDbPath))
+      .then(_.compose(console.log, JSON.parse))
+      .then(null, console.error)
+      .done();
+
+
+-----------------------------------------------------------------
+
+You've finished all the challenges! Hooray!
+
